@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  
+}
+
+.recharts-wrapper{
+  margin-left: auto; 
+  margin-right: auto;
+  margin-top: 100px;
+
 }
 
 .App-logo {
