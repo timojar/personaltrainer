@@ -19,8 +19,10 @@ export default function Trainings(props) {
   };
 
   return (
-    <div>
-      <table id="trainings">
+    <div id="trainings">
+      
+      <input placeholder="Search...." type="text" name="seacrh" onChange={props.searchByActivity} />
+      <table >
         <tbody>
           <tr>
             <th>

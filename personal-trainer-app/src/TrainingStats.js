@@ -10,13 +10,9 @@ import {
   CartesianGrid,
 } from "recharts";
 
-export default function TrainingStats() {
-  const [trainings, setTrainings] = React.useState([]);
+export default function TrainingStats(props) {  
 
-  React.useEffect(() => {
-    trainingServcice.getTrainings().then(setTrainings);
-    console.log(trainings);
-  }, []);
+  const { trainings } = props;
 
   return (
     <div>

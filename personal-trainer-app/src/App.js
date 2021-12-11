@@ -7,11 +7,33 @@ import { parseJSON } from "date-fns";
 
 function App() {
   const [trainings, setTrainings] = React.useState([]);
+  const [allTrainings, setAllTrainings] = React.useState([]);
 
   React.useEffect(() => {
     trainingServcice.getTrainings().then(setTrainings);
+    trainingServcice.getTrainings().then(setAllTrainings);
     console.log(trainings);
   }, []);
+
+  const searchByActivity =(event) =>{
+    
+    const searchStr =event.target.value;
+    console.log(event.nativeEvent.inputType)
+    
+    if(searchStr !== ''){
+    const toFilter = [...trainings];
+    const filtered = toFilter.filter((t) =>t.activity.toLowerCase().includes(searchStr.toLowerCase()))   
+  
+      setTrainings(filtered)
+    }
+    else{
+      setTrainings(allTrainings)
+    }
+    
+
+    
+
+  }
 
   const sortBy = (butt) => {
     console.log("click" + butt);
@@ -42,7 +64,7 @@ function App() {
 
   return (
     <div className="App">
-      <Trainings sortBy={sortBy} trainings={trainings} />
+      <Trainings searchByActivity={searchByActivity} sortBy={sortBy} trainings={trainings} />
     </div>
   );
 }
