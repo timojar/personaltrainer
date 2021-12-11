@@ -3,6 +3,7 @@ import trainingServcice from "./services/training";
 import TrainingStats from "./TrainingStats";
 import Trainings from "./components/Trainings";
 import React from "react";
+import { parseJSON } from "date-fns";
 
 function App() {
   const [trainings, setTrainings] = React.useState([]);
@@ -27,6 +28,15 @@ function App() {
       const sorted = toSort.sort((a, b) => a.duration - b.duration);
       console.log(sorted);
       setTrainings(sorted);
+    }
+
+    if (butt == 3) {
+
+      const toSort = [...trainings];
+      const sorted = toSort.sort((a, b) => parseJSON(a.date) - parseJSON(b.date));
+      console.log(sorted);
+      setTrainings(sorted);
+
     }
   };
 
