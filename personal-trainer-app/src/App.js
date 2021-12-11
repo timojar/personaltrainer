@@ -1,37 +1,100 @@
 import "./App.css";
 import trainingServcice from "./services/training";
+import customerService from "./services/customer";
 import TrainingStats from "./TrainingStats";
+import NotFound from "./NotFound";
+import Customers from "./components/Customers";
 import Trainings from "./components/Trainings";
 import React from "react";
 import { parseJSON } from "date-fns";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [trainings, setTrainings] = React.useState([]);
   const [allTrainings, setAllTrainings] = React.useState([]);
+  const [customers, setCustomers] = React.useState([]);
+  const [allcustomers, setAllCustomers] = React.useState([]);
 
   React.useEffect(() => {
     trainingServcice.getTrainings().then(setTrainings);
     trainingServcice.getTrainings().then(setAllTrainings);
+    customerService.getCustomers().then(setCustomers);
+    customerService.getCustomers().then(setAllCustomers);
     console.log(trainings);
   }, []);
 
-  const searchByActivity =(event) =>{
-    
-    const searchStr =event.target.value;
-    console.log(event.nativeEvent.inputType)
-    
-    if(searchStr !== ''){
-    const toFilter = [...trainings];
-    const filtered = toFilter.filter((t) =>t.activity.toLowerCase().includes(searchStr.toLowerCase()))   
-  
-      setTrainings(filtered)
+  const searchCustomersBy = (event) => {
+    const searchCustStr = event.target.value;
+    if (searchCustStr !== "") {
+      const toFilter = [...customers];
+      const filtered = toFilter.filter((c) => 
+        (c.firstname + c.lastname+c.email+c.phone+c.postcode+c.streetaddress).toLowerCase().includes(searchCustStr.toLowerCase())
+      );
+      setCustomers(filtered);
     }
-    else{
-      setTrainings(allTrainings)
+    else {
+      setCustomers(allcustomers);
     }
-    
+  };
 
-    
+  const searchByActivity = (event) => {
+    const searchStr = event.target.value;
+    console.log(event.nativeEvent.inputType);
+
+    if (searchStr !== "") {
+      const toFilter = [...trainings];
+      const filtered = toFilter.filter((t) =>
+        t.activity.toLowerCase().includes(searchStr.toLowerCase())
+      );
+
+      setTrainings(filtered);
+    } else {
+      setTrainings(allTrainings);
+    }
+  };
+
+  const sortCust = (butt) =>{
+    const toSort = [...customers];
+    console.log(butt)
+    if (butt == 1) {
+      const sorted = toSort.sort((a, b) =>
+      a.firstname.localeCompare(b.firstname)
+    );
+    setCustomers(sorted);
+    }
+    if (butt == 2) {
+      const sorted = toSort.sort((a, b) =>
+      a.lastname.localeCompare(b.lastname)
+    );
+    setCustomers(sorted);
+    }
+    if (butt == 3) {
+      const sorted = toSort.sort((a, b) =>
+      a.email.localeCompare(b.email)
+    );
+    setCustomers(sorted);
+
+    }
+    if (butt == 4) {
+      const sorted = toSort.sort((a, b) =>
+      a.phone.localeCompare(b.phone)
+    );
+    setCustomers(sorted);      
+    }
+    if (butt == 5) {
+      const sorted = toSort.sort((a, b) =>
+      a.postcode	.localeCompare(b.postcode	)
+    );
+    setCustomers(sorted); 
+      
+    }
+    if (butt == 6) {
+      const sorted = toSort.sort((a, b) =>
+      a.streetaddress.localeCompare(b.streetaddress)
+    );
+    setCustomers(sorted);
+      
+    }
 
   }
 
@@ -53,18 +116,49 @@ function App() {
     }
 
     if (butt == 3) {
-
       const toSort = [...trainings];
-      const sorted = toSort.sort((a, b) => parseJSON(a.date) - parseJSON(b.date));
+      const sorted = toSort.sort(
+        (a, b) => parseJSON(a.date) - parseJSON(b.date)
+      );
       console.log(sorted);
       setTrainings(sorted);
-
     }
   };
 
   return (
     <div className="App">
-      <Trainings searchByActivity={searchByActivity} sortBy={sortBy} trainings={trainings} />
+      <Router>
+        <Link to="/"> Activities </Link> <Link to="/stats">Statistics</Link>{" "}
+        <Link to="/customers">Customers</Link>{" "}
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Trainings
+                searchByActivity={searchByActivity}
+                sortBy={sortBy}
+                trainings={trainings}
+              />
+            }
+          />
+          <Route
+            path="/stats"
+            element={<TrainingStats trainings={allTrainings} />}
+          />
+          <Route
+            path="/customers"
+            element={
+              <Customers
+                searchCustomersBy={searchCustomersBy}
+                customers={customers}
+                sortCust={sortCust}
+              />
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
