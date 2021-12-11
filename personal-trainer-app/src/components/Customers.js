@@ -25,7 +25,7 @@ export default function Customers(props) {
                   props.sortCust(buttCol);
                 }}
               >
-                firstname
+                (sort)
               </a>
             </th>
             <th>
@@ -35,7 +35,7 @@ export default function Customers(props) {
                   props.sortCust(buttCol);
                 }}
               >
-                lastname
+                (sort)
               </a>
             </th>
             <th>
@@ -45,7 +45,7 @@ export default function Customers(props) {
                   props.sortCust(buttCol);
                 }}
               >
-                email
+                (sort)
               </a>
             </th>
             <th>
@@ -55,7 +55,7 @@ export default function Customers(props) {
                   props.sortCust(buttCol);
                 }}
               >
-                phone
+                (sort)
               </a>
             </th>
             <th>
@@ -65,7 +65,7 @@ export default function Customers(props) {
                   props.sortCust(buttCol);
                 }}
               >
-                postcode
+                (sort)
               </a>
             </th>
             <th>
@@ -75,9 +75,17 @@ export default function Customers(props) {
                   props.sortCust(buttCol);
                 }}
               >
-                streetaddress
+                (sort)
               </a>
             </th>
+          </tr>
+          <tr>
+            <th>firstname</th>  
+            <th>lastname</th> 
+            <th>email</th> 
+            <th>phone</th> 
+            <th>postcode</th> 
+            <th>streetaddress</th> 
           </tr>
           {customers.map((c, index) => (
             <tr key={index}>
