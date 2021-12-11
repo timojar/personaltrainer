@@ -10,7 +10,7 @@ import {
   CartesianGrid,
 } from "recharts";
 
-export default function Activities() {
+export default function TrainingStats() {
   const [trainings, setTrainings] = React.useState([]);
 
   React.useEffect(() => {
