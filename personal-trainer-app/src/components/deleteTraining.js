@@ -17,9 +17,9 @@ export default function DeleteTraining(props) {
  
   return (
     <div>
-      <button onClick={() => setOpen((o) => !o)}>
+      <a onClick={() => setOpen((o) => !o)}>
         Delete Training
-      </button>
+      </a>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
       <label>Are you sure want to delete?</label> 
       <br/> 

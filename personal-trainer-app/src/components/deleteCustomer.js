@@ -17,9 +17,9 @@ export default function DeleteCustomer(props) {
  
   return (
     <div>
-      <button onClick={() => setOpen((o) => !o)}>
-        Delete Customer
-      </button>
+      <a onClick={() => setOpen((o) => !o)}>
+        Delete
+      </a>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
       <label>Are you sure want to delete?</label> 
       <br/> 

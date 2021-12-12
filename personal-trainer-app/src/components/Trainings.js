@@ -24,6 +24,11 @@ export default function Trainings(props) {
   return (
     <div id="trainings">
 
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
       <TrainingForm customers={customers} />
       
       <input placeholder="Search...." type="text" name="seacrh" onChange={props.searchByActivity} />
@@ -71,6 +76,10 @@ export default function Trainings(props) {
           ))}
         </tbody>
       </table>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 }

@@ -64,9 +64,9 @@ export default function TrainingForm(props) {
   });
   return (
     <div>
-      <p className="create" onClick={() => setOpen((o) => !o)}>
+      <a className="create" onClick={() => setOpen((o) => !o)}>
         Create training for customer
-      </p>
+      </a>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
         <form onSubmit={formik.handleSubmit}>
           <br />
@@ -128,6 +128,7 @@ export default function TrainingForm(props) {
           <br />
           <br />
           <button type="submit">Submit</button>
+          <button onClick={closeModal}>Cancel</button>
         </form>
       </Popup>
     </div>

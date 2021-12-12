@@ -1,6 +1,9 @@
 .App {
   text-align: center;
-  
+  background-color: #282c34;
+}
+.content{
+  background-color: aliceblue;
 }
 #trainings table, #trainings input{
   margin-left: auto; 
@@ -9,9 +12,19 @@
 
 }
 
-.App p {margin-left: auto; 
-        margin-right: auto;
-      color: blue;}
+.App a {
+  color: rgb(255, 0, 0);
+  font-weight: bolder;
+}
+.App a:hover {
+  background-color: yellow;
+}
+
+.App table , th, td  {
+  border: 1px solid black;
+}
+
+
 
 #customers table, #customers input{
   margin-left: auto; 

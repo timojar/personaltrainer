@@ -127,6 +127,13 @@ function App() {
 
   return (
     <div className="App">
+       <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <div className="content">
       <Router>
         <Link to="/"> Activities </Link> <Link to="/stats">Statistics</Link>{" "}
         <Link to="/customers">Customers</Link>{" "}        
@@ -159,6 +166,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
+    </div>
     </div>
   );
 }

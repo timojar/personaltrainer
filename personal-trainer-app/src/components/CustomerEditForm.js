@@ -55,9 +55,9 @@ export default function CustomerEditForm(props) {
 
   return (
     <div>
-      <button type="button" className="button" onClick={() => openModal()}>
+      <a  className="edit" onClick={() => openModal()}>
         Edit
-      </button>
+      </a>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
         <form onSubmit={handleSubmit}>
           <br />

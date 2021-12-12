@@ -13,22 +13,22 @@ export default function CustomerForm() {
     }
 
     if (!values.email) {
-      errors.color = "Required";
+      errors.email = "Required";
     }
     if (!values.lastname) {
-      errors.color = "Required";
+      errors.lastname = "Required";
     }
 
     if (!values.phone) {
-      errors.model = "Required";
+      errors.phone = "Required";
     }
 
     if (!values.postcode) {
-      errors.fuel = "Required";
+      errors.postcode = "Required";
     }
 
     if (!values.streetaddress) {
-      errors.year = "Required";
+      errors.streetaddress = "Required";
     }
 
     return errors;
@@ -74,9 +74,9 @@ export default function CustomerForm() {
   });
   return (
     <div>
-      <p className="create" onClick={() => setOpen((o) => !o)}>
+      <a className="create" onClick={() => setOpen((o) => !o)}>
         Create Customer
-      </p>
+      </a>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
 
       <form onSubmit={formik.handleSubmit}>
@@ -103,12 +103,12 @@ export default function CustomerForm() {
         />
         {formik.errors.lastname ? <div>{formik.errors.lastname}</div> : null}
         <br />
-        <label htmlFor="email">Model</label>
+        <label htmlFor="email">email</label>
         <br />
         <input
           id="email"
           name="email"
-          type="text"
+          type="email"
           onChange={formik.handleChange}
           value={formik.values.email}
         />
@@ -151,6 +151,7 @@ export default function CustomerForm() {
         <br />
         <br />
         <button type="submit">Submit</button>
+        <button onClick={closeModal} >Cancel</button>
       </form>
       </Popup>
     </div>
