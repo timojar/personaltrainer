@@ -5,7 +5,6 @@ import TrainingStats from "./TrainingStats";
 import NotFound from "./NotFound";
 import Customers from "./components/Customers";
 import Trainings from "./components/Trainings";
-import CustomerForm from "./components/CustomerForm";
 import React from "react";
 import { parseJSON } from "date-fns";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -40,7 +39,7 @@ function App() {
 
   const searchByActivity = (event) => {
     const searchStr = event.target.value;
-    console.log(event.nativeEvent.inputType);
+    
 
     if (searchStr !== "") {
       const toFilter = [...trainings];
@@ -130,8 +129,7 @@ function App() {
     <div className="App">
       <Router>
         <Link to="/"> Activities </Link> <Link to="/stats">Statistics</Link>{" "}
-        <Link to="/customers">Customers</Link>{" "}
-        <Link to="/createcustomer">Add customer</Link>{" "}
+        <Link to="/customers">Customers</Link>{" "}        
         <Routes>
           <Route
             exact
@@ -151,14 +149,13 @@ function App() {
           <Route
             path="/customers"
             element={
-              <Customers
+              <Customers trainings={allTrainings}
                 searchCustomersBy={searchCustomersBy}
                 customers={customers}
                 sortCust={sortCust}
               />
             }
-          />
-          <Route path="/createcustomer" element={<CustomerForm />} />
+          />          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

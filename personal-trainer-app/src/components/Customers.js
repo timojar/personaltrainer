@@ -1,15 +1,15 @@
 import React from "react";
-import customerService from "../services/customer";
+import CustomerEditForm from "../components/CustomerEditForm";
+import CustomerForm from "../components/CustomerForm";
+import DeleteCustomer from "../components/deleteCustomer";
 
 
 export default function Customers(props) {
   const { customers } = props;
+  const { trainings } = props;
   console.log(customers);
 
-  const deleteCustomer = (url) => {
-    console.log(url);
-    customerService.deleteCustomer(url)
-  };
+  
 
   return (
     <div id="customers">
@@ -20,8 +20,11 @@ export default function Customers(props) {
         onChange={props.searchCustomersBy}
       />
 
+<CustomerForm />
+
       <table>
         <tbody>
+          <tr></tr>
           <tr>
             <th>
               <a
@@ -99,10 +102,9 @@ export default function Customers(props) {
               <td>{c.email}</td>
               <td>{c.phone}</td>
               <td>{c.postcode}</td>
-              <td>{c.streetaddress}</td>
-              <td>
-                <a onClick={() => deleteCustomer(c.links[1].href)}>delete</a>
-              </td>              
+              <td>{c.streetaddress}</td>              
+              <td><DeleteCustomer url={c.links[1].href} /> </td>
+              <td><CustomerEditForm trainings={trainings} customer={c} /></td>
             </tr>
           ))}
         </tbody>
