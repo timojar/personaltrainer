@@ -2,6 +2,7 @@ import React from "react";
 import { parseJSON } from "date-fns";
 import { format } from "date-fns";
 import TrainingForm from "../components/TrainingForm";
+import DeleteTraining from "../components/deleteTraining";
 
 export default function Trainings(props) {
   const { trainings } = props;
@@ -65,7 +66,7 @@ export default function Trainings(props) {
               <td>{t.activity}</td>
               <td>{t.duration}</td>
               <td>{parseTrainingDate(t.date)}</td>
-              <td></td>
+              <td><DeleteTraining url={t.links[1].href}/></td>
             </tr>
           ))}
         </tbody>

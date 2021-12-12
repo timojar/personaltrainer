@@ -11,6 +11,21 @@ const getTrainings= async () => {
   }
 };
 
+const deleteTraining= async (props) => {
+  
+
+  try {
+    const res = await axios.delete(props);  
+    console.log(res);
+    window.location.reload(false)
+    
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+
+}
+
 export default {
-    getTrainings
+    getTrainings, deleteTraining
 };
