@@ -135,7 +135,7 @@ function App() {
       <br/>
       <div className="content">
       <Router>
-        <Link to="/"> Activities </Link> <Link to="/stats">Statistics</Link>{" "}
+        <Link to="/"> Trainings </Link> <Link to="/stats">Statistics</Link>{" "}
         <Link to="/customers">Customers</Link>{" "}        
         <Routes>
           <Route

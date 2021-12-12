@@ -109,6 +109,10 @@ export default function Customers(props) {
           ))}
         </tbody>
       </table>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 }

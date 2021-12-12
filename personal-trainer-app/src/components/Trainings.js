@@ -42,7 +42,7 @@ export default function Trainings(props) {
                   props.sortBy(buttCol);
                 }}
               >
-                Activity
+                Activity (sort)
               </a>
             </th>
             <th>
@@ -52,7 +52,7 @@ export default function Trainings(props) {
                   props.sortBy(buttCol);
                 }}
               >
-                Duration
+                Duration (sort)
               </a>
             </th>
             <th>
@@ -62,7 +62,7 @@ export default function Trainings(props) {
                   props.sortBy(buttCol);
                 }}
               >
-                Date
+                Date (sort)
               </a>
             </th>
           </tr>

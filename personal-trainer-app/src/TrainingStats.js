@@ -16,7 +16,7 @@ export default function TrainingStats(props) {
 
   return (
     <div>
-      <BarChart width={600} height={300} data={trainings}>
+      <BarChart width={1300} height={400} data={trainings}>
         <XAxis dataKey="activity" stroke="#8884d8" />
         <YAxis />
         <Tooltip />
