@@ -1,12 +1,24 @@
 .App {
   text-align: center;
-  
+  background-color: #282c34;
+}
+.content{
+  background-color: aliceblue;
 }
 #trainings table, #trainings input{
   margin-left: auto; 
   margin-right: auto;
   margin-top: 150px;
 
+}
+
+.App a {
+  color: rgb(255, 0, 0);
+  font-weight: bolder;
+}
+
+.App table , th, td  {
+  border: 1px solid black;
 }
 
 #customers table, #customers input{

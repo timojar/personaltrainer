@@ -99,10 +99,7 @@ export default function Customers(props) {
               <td>{c.email}</td>
               <td>{c.phone}</td>
               <td>{c.postcode}</td>
-              <td>{c.streetaddress}</td>
-              <td>
-                <a onClick={() => deleteCustomer(c.links[1].href)}>delete</a>
-              </td>              
+              <td>{c.streetaddress}</td>                           
             </tr>
           ))}
         </tbody>
