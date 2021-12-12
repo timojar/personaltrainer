@@ -1,10 +1,15 @@
 import React from "react";
-import { parseJSON } from "date-fns";
-import { format } from "date-fns";
+import customerService from "../services/customer";
+
 
 export default function Customers(props) {
   const { customers } = props;
   console.log(customers);
+
+  const deleteCustomer = (url) => {
+    console.log(url);
+    customerService.deleteCustomer(url)
+  };
 
   return (
     <div id="customers">
@@ -80,12 +85,12 @@ export default function Customers(props) {
             </th>
           </tr>
           <tr>
-            <th>firstname</th>  
-            <th>lastname</th> 
-            <th>email</th> 
-            <th>phone</th> 
-            <th>postcode</th> 
-            <th>streetaddress</th> 
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>postcode</th>
+            <th>streetaddress</th>
           </tr>
           {customers.map((c, index) => (
             <tr key={index}>
@@ -95,6 +100,9 @@ export default function Customers(props) {
               <td>{c.phone}</td>
               <td>{c.postcode}</td>
               <td>{c.streetaddress}</td>
+              <td>
+                <a onClick={() => deleteCustomer(c.links[1].href)}>delete</a>
+              </td>              
             </tr>
           ))}
         </tbody>
