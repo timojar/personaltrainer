@@ -1,9 +1,11 @@
 import React from "react";
 import { parseJSON } from "date-fns";
 import { format } from "date-fns";
+import TrainingForm from "../components/TrainingForm";
 
 export default function Trainings(props) {
   const { trainings } = props;
+  const { customers } =props;
   console.log(trainings);
 
   const parseTrainingDate = (sTRDate) => {
@@ -20,6 +22,8 @@ export default function Trainings(props) {
 
   return (
     <div id="trainings">
+
+      <TrainingForm customers={customers} />
       
       <input placeholder="Search...." type="text" name="seacrh" onChange={props.searchByActivity} />
       <table >

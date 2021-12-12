@@ -135,7 +135,7 @@ function App() {
             exact
             path="/"
             element={
-              <Trainings
+              <Trainings customers={allcustomers}
                 searchByActivity={searchByActivity}
                 sortBy={sortBy}
                 trainings={trainings}
